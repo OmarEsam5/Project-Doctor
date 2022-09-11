@@ -55,6 +55,10 @@ html {
     }
 
 /* Start Header */
+header {
+    position: relative;
+}
+
 header .container .header-top {
     display: flex;
     justify-content: space-between;
@@ -62,7 +66,7 @@ header .container .header-top {
     border-bottom: 2px solid rgba(0, 0, 0, 0.116);
 }
 
-header .container .logo img {
+.logo img {
     width: 170px;
     margin: 10px 0;
 }
@@ -104,6 +108,10 @@ header .container .awesom .text p {
     align-items: center;
 }
 
+.header-bottom .logo {
+    display: none;
+}
+
 .header-bottom ul {
     display: flex;
     gap: 20px;
@@ -116,6 +124,7 @@ header .container .awesom .text p {
     height: 100%;
     font-size: 19px;
     color: var(--text-color);
+    transition: 0.3s;
 }
 
 .header-bottom ul li a:hover {
@@ -153,6 +162,51 @@ header .container .awesom .text p {
     color: black;
     font-size: 22px;
     font-weight: 900;
+}
+
+.header-bottom .bar {
+    display: none !important;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-bars-progress {
+    font-size: 26px;
+}
+
+@media (max-width: 768px) {
+    header .container .header-top, .header-bottom .links, .header-bottom ul {
+        display: none;
+    }
+    .header-bottom .logo, .fa-bars-progress {
+        display: block;
+    }
+    .header-bottom .bar:hover + ul {
+        display: flex;
+    }
+    .header-bottom ul {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        gap: 0;
+        background-color: rgb(0 0 0 / 50%);
+        height: fit-content;
+    }
+    .header-bottom ul a {
+        padding: 20px;
+        color: white !important;
+    }
+    .header-bottom ul a:hover {
+        color: var(--section-color) !important;
+        border-bottom: 1px solid var(--section-color);
+    }
+
 }
 /* End Header */
 /* Start Landing */
@@ -196,6 +250,15 @@ header .container .awesom .text p {
     font-weight: 600;
     color: white;
 }
+
+@media (max-width: 768px) {
+    .landing .text {
+        width: 100%;
+        margin: 0;
+        padding: 0 25px;
+    }
+}
+
 /* End Landing */
 /* Start about */
 .about {
@@ -247,11 +310,17 @@ header .container .awesom .text p {
     text-align: center;
     line-height: 23px;
 }
+
+@media (max-width: 768px) {
+    .about {
+        flex-direction: column;
+    }
+}
+
 /* End about */
 /* Start about-us */
 .about-us {
     margin-top: 85px;
-    height: 95vh;
 }
 
 .about-us .text-header {
@@ -259,7 +328,6 @@ header .container .awesom .text p {
 }
 
 .about-us .text-header p {
-    padding: 0 50px;
     padding: 0 170px;
     line-height: 25px;
 }
@@ -285,7 +353,7 @@ header .container .awesom .text p {
 
 .about-us .footer .images img {
     width: 250px;
-    height: 77.35vh;
+    height: 80vh;
 }
 
 
@@ -317,17 +385,37 @@ header .container .awesom .text p {
     color: var(--text-color);
 }
 
-/* End services */
+@media (max-width: 768px) {
+    .about-us .footer .images {
+        display: none;
+    }
+    .about-us .text-header p {
+        padding: 0 10px;
+        margin-bottom: 45px;
+    }
+    .about-us .footer {
+        flex-direction: column;
+    }
+    .about-us .footer .text {
+        text-align: center;
+        margin: 0 0 30px !important;
+    }
+    .about-us .footer .text .awesom {
+        justify-content: center;
+    }
+}
+
+/* End about-us */
 /* Start services */
 .services {
     position: relative;
     background-image: url(../images/landing.png);
     background-size: cover;
     display: flex;
-    height: 50vh;
     justify-content: center;
     align-items: center;
     gap: 90px;
+    padding: 70px 0;
 }
 
 .services::after {
@@ -373,6 +461,14 @@ header .container .awesom .text p {
     text-align: center;
     line-height: 25px;
 }
+
+@media (max-width: 768px) {
+    .services {
+        flex-wrap: wrap;
+        gap: 50px;
+    }
+}
+
 /* End services */
 /* Start services-us */
 .services-us {
@@ -466,7 +562,6 @@ header .container .awesom .text p {
     color: var(--main-color);
     border-radius: 40px;
     left: 4px;
-    /* transform: rotate(0turn); */
     transition: 0.3s;
 }
 
@@ -486,6 +581,19 @@ header .container .awesom .text p {
 .services-us .container .box-right .box h4:hover ~ p,
 .services-us .container .box-right .box p:hover {
     display: block;
+}
+
+@media (max-width: 768px) {
+    .services-us .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .services-us .container .box-left .images {
+        flex-direction: column;
+    }
+    .services-us .container .box-left .images .imges img {
+        width: 100%;
+    }
 }
 /* End services-us */
 /* Start Galary */
@@ -534,7 +642,23 @@ header .container .awesom .text p {
 .galary .images img {
     width: 250px;
     z-index: 2;
+}
 
+@media (max-width: 768px) {
+    .galary {
+        height: 300vh;
+    }
+    .galary .images {
+        top: 15%;
+        gap: 0;
+        padding: 0;
+    }
+    .galary .images img {
+        width: 100%;
+    }
+    .galary .text {
+        padding: 25px 15px;
+    }
 }
 /* End Galary */
 /* Start ourteam */
@@ -550,6 +674,7 @@ header .container .awesom .text p {
 .ourteam .text-header p {
     line-height: 25px;
     margin-bottom: 8%;
+    padding: 0 60px;
 }
 
 .ourteam .images {
@@ -619,6 +744,19 @@ header .container .awesom .text p {
     justify-content: center;
     align-items: center;
     gap: 70px;
+}
+
+@media (max-width: 768px) {
+    .ourteam .images {
+        flex-wrap: wrap;
+    }
+    .ourteam .text-header p {
+        padding: 0 20px;
+    }
+    .ourteam .galary-footer {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
 
 /* End ourteam */
@@ -772,6 +910,29 @@ footer .footer {
     justify-content: center;
     align-items: center;
     color: rgb(192, 186, 186);
+}
+
+
+@media (max-width: 768px) {
+    footer .container {
+        flex-direction: column;
+    }
+    footer .text-medil{
+        display: none;
+    }
+    footer .container .text-left {
+        padding-left: 25px;
+    }
+    footer .container .form h2 {
+        width: 100%;
+        text-align: center;
+    }
+    footer .form form input:last-child {
+        margin-left: 50px;
+    }
+    footer .container .form form textarea {
+        max-width: 100% !important;
+    }
 }
 /* End Footer */
 
